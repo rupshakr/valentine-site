@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Baua ❤️ Vishu</title>
+
+<style>
+body {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+background: linear-gradient(to right, #ff758c, #ff7eb3);
+font-family: 'Arial', sans-serif;
+margin: 0;
+overflow: hidden;
+}
+
+.card {
+background: white;
+padding: 40px;
+border-radius: 25px;
+text-align: center;
+box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+width: 320px;
+position: relative;
+z-index: 2;
+}
+
+h1 {
+color: #ff2f5b;
+margin-bottom: 15px;
+}
+
+p {
+font-size: 14px;
+color: #444;
+}
+
+button {
+padding: 12px 30px;
+font-size: 16px;
+border: none;
+border-radius: 25px;
+cursor: pointer;
+margin: 10px;
+transition: transform 0.2s;
+}
+
+button:hover {
+transform: scale(1.1);
+}
+
+#yesBtn {
+background: #ff2f5b;
+color: white;
+}
+
+#noBtn {
+background: #ddd;
+position: absolute;
+}
+
+.thankyou {
+display: none;
+}
+
+.quote {
+font-style: italic;
+font-size: 13px;
+margin-top: 10px;
+color: #666;
+}
+
+.heart {
+position: absolute;
+color: rgba(255, 0, 100, 0.4);
+font-size: 20px;
+animation: float 6s infinite ease-in;
+}
+
+@keyframes float {
+0% {
+transform: translateY(0) scale(1);
+opacity: 1;
+}
+100% {
+transform: translateY(-800px) scale(1.5);
+opacity: 0;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="card" id="questionBox">
+<h1>Vishu 💖</h1>
+<p>Baua has one very important question...</p>
+<h2>Will you be my Valentine? 🌹</h2>
+
+<button id="yesBtn" onclick="showThankYou()">Yes 💕</button>
+<button id="noBtn">No 😅</button>
+
+</div>
+
+<div class="card thankyou" id="thankYouBox">
+<h1>He said YES! 🥰</h1>
+
+<img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif"
+alt="Love GIF"
+style="width: 220px; border-radius: 15px; margin: 15px 0;">
+
+<p>Vishu, you just made Baua's heart do the Jim Halpert camera look ❤️📸</p>
+
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", () => {
+const x = Math.random() * (window.innerWidth - 120);
+const y = Math.random() * (window.innerHeight - 120);
+noBtn.style.left = `${x}px`;
+noBtn.style.top = `${y}px`;
+});
+
+function showThankYou() {
+document.getElementById("questionBox").style.display = "none";
+document.getElementById("thankYouBox").style.display = "block";
+launchHearts();
+}
+
+function launchHearts() {
+for (let i = 0; i < 25; i++) {
+const heart = document.createElement("div");
+heart.className = "heart";
+heart.innerHTML = "❤️";
+heart.style.left = Math.random() * window.innerWidth + "px";
+heart.style.bottom = "0px";
+heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+document.body.appendChild(heart);
+
+setTimeout(() => {
+heart.remove();
+}, 6000);
+}
+}
+</script>
+
+</body>
+</html>
